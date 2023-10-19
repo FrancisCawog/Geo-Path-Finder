@@ -1,9 +1,19 @@
-/* Your global styles can go here */
-
 .country {
-    /* Styles for all countries */
-    fill: #ccc; /* Default color for all countries */
+    fill: #ccc;
     stroke: #555;
     stroke-width: 0.5;
-  }
-  
+  }  
+
+path.country[data-country="Sudan"] {
+  fill: red;
+}
+
+path.country[data-country="Kazakhstan"] {
+  fill: blue;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}

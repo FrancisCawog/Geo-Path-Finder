@@ -1,10 +1,22 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-/* Your global styles can go here */
 .country {
-  /* Styles for all countries */
-  fill: #ccc; /* Default color for all countries */
+  fill: #ccc;
   stroke: #555;
   stroke-width: 0.5;
+}
+
+path.country[data-country=Sudan] {
+  fill: red;
+}
+
+path.country[data-country=Kazakhstan] {
+  fill: blue;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
