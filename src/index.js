@@ -1,12 +1,8 @@
-import Map from "./scripts/map";
-import * as d3 from "d3";
+import initializeMap from "./scripts/map";
 
+initializeMap();
 
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
-const svg = d3.select('body').append('svg').attr('width', windowWidth).attr('height', windowHeight);
-
-// Code to update the SVG dimensions on window resize
+const svg = d3.select('svg');
 window.addEventListener("resize", function () {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
