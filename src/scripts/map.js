@@ -5,7 +5,6 @@ function initializeMap() {
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
 
-  
   const svg = d3.select('body')
     .append('svg')
     .attr('width', windowWidth)
@@ -32,4 +31,3 @@ function initializeMap() {
 }
 
 export default initializeMap;
-

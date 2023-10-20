@@ -1,19 +1,17 @@
 .country {
-    fill: #ccc;
-    stroke: #555;
-    stroke-width: 0.5;
-  }  
+  fill: rgba(76, 207, 76, 0.56);
+  stroke: #555;
+  stroke-width: 0.5;
+}
 
-path.country[data-country="Sudan"] {
+path.country.start-country {
   fill: red;
 }
 
-path.country[data-country="Kazakhstan"] {
+path.country.end-country {
   fill: blue;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+:not(.objects) {
+  background-color: rgb(160, 208, 238);
 }
