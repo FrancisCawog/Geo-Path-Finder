@@ -2,14 +2,9 @@ function getRandomCountries(mergedData) {
   const independentCountries = mergedData.filter(country => {
     const restCountriesInfo = country.restCountriesInfo;
     return restCountriesInfo && (
-      restCountriesInfo.independent === true ||
-      restCountriesInfo.name.common ==="Palestine" ||
-      restCountriesInfo.name.common === "Kosovo" ||
-      restCountriesInfo.name.common === "Taiwan"
+      restCountriesInfo.independent === true 
     ) && restCountriesInfo.borders.length !== 0;
   });
-  
-  console.log(independentCountries);
   
   const randomCountries = [];
   while (randomCountries.length < 2) {
