@@ -16,33 +16,28 @@ function initializeMap() {
   const path = d3.geoPath(projection);
   const g = svg.append('g');
 
+  const countryNameChanges = {
+    "Macedonia": "North Macedonia",
+    "S. Sudan": "South Sudan",
+    "Côte d'Ivoire": "Ivory Coast",
+    "Dominican Rep.": "Dominican Republic",
+    "eSwatini": "Eswatini",
+    "Bosnia and Herz.": "Bosnia and Herzegovina",
+    "Eq. Guinea": "Equatorial Guinea",
+    "Dem. Rep. Congo": "Democratic Republic of the Congo",
+    "Vatican": "Vatican City",
+    "Congo": "Republic of the Congo",
+    "Central African Rep.": "Central African Republic",
+  };
+
   d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json')
     .then(data => {
       const countries = topojson.feature(data, data.objects.countries);
 
       countries.features.forEach(country => {
-        if (country.properties.name === "Macedonia") {
-          country.properties.name = "North Macedonia";
-        } else if (country.properties.name === "S. Sudan") {
-          country.properties.name = "South Sudan";
-        } else if (country.properties.name === "Côte d'Ivoire") {
-          country.properties.name = "Ivory Coast";
-        } else if (country.properties.name === "Dominican Rep.") {
-          country.properties.name = "Dominican Republic";
-        } else if (country.properties.name === "eSwatini") {
-          country.properties.name = "Eswatini";
-        } else if (country.properties.name === "Bosnia and Herz.") {
-          country.properties.name = "Bosnia and Herzegovina";
-        } else if (country.properties.name === "Eq. Guinea") {
-          country.properties.name = "Equatorial Guinea";
-        } else if (country.properties.name === "Dem. Rep. Congo") {
-          country.properties.name = "Democratic Republic of the Congo";
-        } else if (country.properties.name === "Vatican") {
-          country.properties.name = "Vatican City";
-        } else if (country.properties.name === "Congo") {
-          country.properties.name = "Republic of the Congo";
-        } else if (country.properties.name === "Central African Rep.") {
-          country.properties.name = "Central African Republic";
+        const newName = countryNameChanges[country.properties.name];
+        if (newName) {
+          country.properties.name = newName;
         } else if (country.properties.name === "Kosovo") {
           country.id = "383";
         }

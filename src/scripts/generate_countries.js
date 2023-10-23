@@ -1,24 +1,21 @@
 function getRandomCountries(mergedData) {
   const independentCountries = mergedData.filter(country => {
     const restCountriesInfo = country.restCountriesInfo;
-    return restCountriesInfo && (
-      restCountriesInfo.independent === true 
-    ) && restCountriesInfo.borders.length !== 0;
+    return restCountriesInfo?.independent === true && restCountriesInfo.borders.length > 0;
   });
-  
+
   const randomCountries = [];
   while (randomCountries.length < 2) {
     const randomIndex = Math.floor(Math.random() * independentCountries.length);
     const randomCountry = independentCountries[randomIndex];
-  
+
     if (randomCountry && randomCountry.properties && randomCountry.properties.name) {
-      if (!randomCountries.includes(randomCountry.properties.name)) {
-        randomCountries.push(randomCountry.properties.name);
-      }
+      randomCountries.push(randomCountry.properties.name);
+      independentCountries.splice(randomIndex, 1);
     }
   }
-  
-  return randomCountries;  
+
+  return randomCountries;
 }
 
 export { getRandomCountries };
