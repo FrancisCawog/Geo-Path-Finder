@@ -18,24 +18,26 @@ function selectRandomCountriesAndCheckConnection(mergedData) {
   const [startCountry, endCountry] = randomCountries;
 
   if (findConnection(independentCountries, startCountry, endCountry)) {
-    console.log(startCountry, endCountry);  /////
+    console.log(startCountry, endCountry);  //////
 
     const shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
     const path = shortest.map(country => country.restCountriesInfo.name.common);
-    console.log(path); //////
+    console.log(path);   //////
 
     d3.selectAll('path.country')
       .classed('start-country', d => d.properties.name === startCountry)
       .classed('end-country', d => d.properties.name === endCountry);
+
+    return [startCountry, endCountry];
   } else {
-    selectRandomCountriesAndCheckConnection(mergedData);
+    return selectRandomCountriesAndCheckConnection(mergedData);
   }
 }
 
 initializeGame(() => {
   merge().then(mergedData => {
-    selectRandomCountriesAndCheckConnection(mergedData);
-    initializeGuessedCountries(mergedData);
+    const [startCountry, endCountry] = selectRandomCountriesAndCheckConnection(mergedData);
+    initializeGuessedCountries(mergedData, startCountry, endCountry);
   });
 });
 
