@@ -1,13 +1,12 @@
 function findConnection(mergedData, startCountryName, endCountryName) {
   const startCountry = mergedData.find(country => country.restCountriesInfo && (country.restCountriesInfo.name.common || country.restCountriesInfo.name.official) === startCountryName);
   const endCountry = mergedData.find(country => country.restCountriesInfo && (country.restCountriesInfo.name.common || country.restCountriesInfo.name.official) === endCountryName);
+  const visited = new Set();
+  const queue = [startCountry];
 
   if (!startCountry || !endCountry) {
     return false;
   }
-
-  const visited = new Set();
-  const queue = [startCountry];
 
   while (queue.length > 0) {
     const currentCountry = queue.shift();
