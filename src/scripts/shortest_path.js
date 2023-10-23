@@ -24,7 +24,6 @@ function shortestPathBFS(mergedData, startCountryName, endCountryName) {
             }
         }
     }
-
     return null;
 }
 
