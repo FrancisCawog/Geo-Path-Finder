@@ -7,8 +7,10 @@ import { initializeGame } from "./scripts/startGame";
 import { initializeGuessedCountries, guessedCountries } from "./scripts/guessed_countries"; 
 import { shortestPathBFS } from "./scripts/shortest_path";
 import { doesPathExistBFS } from "./scripts/does_path_exist";
+import { renderShortestPathPopup, renderLongerPathPopup } from "./scripts/pop_up2";
 
 let mergedData;
+let shortest;
 
 function selectRandomCountriesAndCheckConnection(mergedData) {
   const independentCountries = mergedData.filter(country => {
@@ -20,11 +22,14 @@ function selectRandomCountriesAndCheckConnection(mergedData) {
   const [startCountry, endCountry] = randomCountries;
 
   if (findConnection(independentCountries, startCountry, endCountry)) {
-    console.log(startCountry, endCountry);  /////
+    console.log(startCountry, endCountry);
 
-    const shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
+    shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
+      if (shortest.length <= 4){
+        return selectRandomCountriesAndCheckConnection(mergedData);
+      }
     const path = shortest.map(country => country.restCountriesInfo.name.common);
-    console.log(path);  /////
+    console.log(path);
 
     d3.selectAll('path.country')
       .classed('start-country', d => d.properties.name === startCountry)
@@ -45,7 +50,7 @@ initializeGame(() => {
   });
 });
 
-console.log(guessedCountries); //////
+console.log(guessedCountries);
 
 initializeMap();
 
@@ -54,9 +59,12 @@ function checkForPath() {
     const pathExists = doesPathExistBFS(mergedData, guessedCountries);
 
     if (pathExists) {
-      console.log('A path exists between the first two guessed countries.');
-    } else {
-      console.log('No path exists between the first two guessed countries.');
+     if (guessedCountries.length === shortest.length){
+      renderShortestPathPopup();
+     } else {
+       const shortestCountryNames = shortest.map(country => country.restCountriesInfo.name.common);
+        renderLongerPathPopup(shortestCountryNames, guessedCountries);
+     }
     }
   }
 }

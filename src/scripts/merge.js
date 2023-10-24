@@ -26,7 +26,7 @@ async function merge() {
   });
 
   restCountriesData.forEach(country => {
-    if (country.name.common === "Kosovo" || country.name.common === "Palestine" || country.name.common === "Taiwan") {
+    if (country.name.common === "Kosovo" || country.name.common === "Palestine" || country.name.common === "Taiwan" || country.name.common === "Zambia") {
       country.independent = true;
     }
     if (country.name.common === "Kosovo") {

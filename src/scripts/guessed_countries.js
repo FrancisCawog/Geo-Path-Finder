@@ -18,9 +18,7 @@ export function initializeGuessedCountries(mergedData, startCountry, endCountry)
           .filter(d => d.properties.name === guess)
           .classed('guessed', true);
 
-        if (!guessedCountries.includes(guess)){
-          guessedCountries.push(guess);
-        };
+        guessedCountries.push(guess);
 
         guessInput.value = "";
       } else {
