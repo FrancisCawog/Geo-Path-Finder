@@ -8,7 +8,7 @@ function renderShortestPathPopup() {
     closeButton.on('click', function () {
       popup.style('display', 'none');
     })
-    const newGameButton = d3.select('#new-game-button');
+    const newGameButton = d3.select('#new-game-button2');
     newGameButton.on('click', function () {
         location.reload();
     });

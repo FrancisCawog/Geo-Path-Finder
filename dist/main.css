@@ -22,6 +22,10 @@ body {
   justify-content: space-between;
 }
 
+svg {
+  background-color: #29335C;
+}
+
 .country {
   fill: #A8C686;
   stroke: #555;
@@ -30,18 +34,57 @@ body {
 
 path.country.start-country {
   fill: #E4572E;
+  transition: fill 0.3s;
+  position: relative;
 }
 
-path.country.end-country {
-  fill: #669BBC;
-}
-
-svg {
-  background-color: #29335C;
+path.country.start-country:hover {
+  fill: #FF5733;
 }
 
 .country.guessed {
   fill: #F3A712;
+  transition: fill 0.3s;
+  position: relative;
+}
+
+.country.guessed:hover {
+  fill: #FFD700;
+}
+
+path.country.end-country {
+  fill: #669BBC;
+  transition: fill 0.3s;
+  position: relative;
+}
+
+path.country.end-country:hover {
+  fill: #6fb0c7;
+}
+
+path.country.start-country::after,
+.country.guessed::after,
+path.country.end-country::after {
+  content: attr(data-country);
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 3px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+path.country.start-country:hover::after,
+.country.guessed:hover::after,
+path.country.end-country:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .popup {

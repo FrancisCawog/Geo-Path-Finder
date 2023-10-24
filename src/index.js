@@ -25,7 +25,7 @@ function selectRandomCountriesAndCheckConnection(mergedData) {
     console.log(startCountry, endCountry);
 
     shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
-      if (shortest.length >= 3){
+      if (shortest.length >= 5){
         return selectRandomCountriesAndCheckConnection(mergedData);
       }
     const path = shortest.map(country => country.restCountriesInfo.name.common);
@@ -83,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function() {
           .classed('guessed', true);
 
           if (!guessedCountries.includes(guess)){
-            guessedCountries.push(guess);
+            const positionToInsert = guessedCountries.length - 1;
+            guessedCountries.splice(positionToInsert, 0, guess);
           }
 
         guessInput.value = "";

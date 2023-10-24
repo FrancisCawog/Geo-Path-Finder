@@ -1,6 +1,6 @@
 export function doesPathExistBFS(mergedData, guessedCountries) {
     const startCountryName = guessedCountries[0];
-    const endCountryName = guessedCountries[1];
+    const endCountryName = guessedCountries[(guessedCountries.length - 1)];
 
     const startCountry = mergedData.find(country => 
         country.restCountriesInfo && 
