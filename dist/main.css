@@ -20,6 +20,30 @@ body {
   height: 58px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+#Nav-bar {
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+#Nav-bar i {
+  margin-right: 5px;
+}
+
+#Title-card {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+#Title-card p {
+  font-size: 30px;
+}
+
+img {
+  margin-right: 10px;
 }
 
 svg {

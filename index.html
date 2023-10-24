@@ -7,14 +7,18 @@
   <link rel="stylesheet" href="./dist/main.css">
   <title>Geo Path Finder</title>
   <script src="./dist/main.js" defer></script>
+  <script src="https://kit.fontawesome.com/935aa488c6.js" crossorigin="anonymous"></script>
 </head>
 <body> 
+
   <header id="Header">
     <div id="Title-card">
-      <p>Geo Path Finder</p>
+        <img src="./src/styles/globe_logo.png" width="58" height="58" alt="Logo">
+        <p>Geo Path Finder</p>
     </div>
     <div id="Nav-bar">
-      <p>Nav bar</p>
+      <a href="https://github.com/FrancisCawog" target="_blank" ><i class="fa-brands fa-github" style="color: white;"></i></a>
+      <a href="https://www.linkedin.com/in/francis-cawog-958178187/" target="_blank" ><i class="fa-brands fa-linkedin" style="color: white;"></i></a>
     </div>
   </header>
 
@@ -22,9 +26,11 @@
   </div>
 
   <div id="guess-box">
-    <input type="text" id="guess-input" placeholder="Guess a country">
+    <input type="text" id="guess-input" list="country-list" placeholder="Guess a country">
     <button id="submit-guess">Submit</button>
-  </div>  
+  </div>
+
+  
 
   <!-- moduls -->
   <div id="popup" class="popup">
@@ -81,4 +87,3 @@
   </div>
 </body>
 </html>
-
