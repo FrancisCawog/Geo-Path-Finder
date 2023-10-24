@@ -6,14 +6,29 @@
   <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./dist/main.css">
   <title>Geo Path Finder</title>
+  <script src="./dist/main.js" defer></script>
 </head>
 <body> 
-  
-  <script src="./dist/main.js" defer></script>
+  <header id="Header">
+    <div id="Title-card">
+      <p>Geo Path Finder</p>
+    </div>
+    <div id="Nav-bar">
+      <p>Nav bar</p>
+    </div>
+  </header>
 
   <div id="map-container">
   </div>
 
+  <div id="guess-box">
+    <input type="text" id="guess-input" placeholder="Guess a country">
+    <button id="submit-guess">Submit</button>
+  </div>  
+
+  
+
+  <!-- moduls -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <h2>Hello and Welcome to Geo Path Finder</h2>
@@ -29,10 +44,6 @@
     </div>
   </div>
 
-  <div id="guess-box">
-    <input type="text" id="guess-input" placeholder="Guess a country">
-    <button id="submit-guess">Submit</button>
-  </div>  
   
   <div id="longer_route" class="popup">
     <div class="popup-content">

@@ -9,11 +9,11 @@ function initializeMap() {
   const svg = d3.select('#map-container')
     .append('svg')
     .attr('width', windowWidth)
-    .attr('height', windowHeight);
+    .attr('height', windowWidth / 2);
 
   const projection = d3.geoEquirectangular()
     // .fitWidth(windowWidth, { type: "Sphere" })
-    .fitSize([windowWidth, windowHeight], { type: "Sphere"});
+    .fitSize([windowWidth, windowWidth / 2], { type: "Sphere"});
 
   const path = d3.geoPath(projection);
   const g = svg.append('g');
