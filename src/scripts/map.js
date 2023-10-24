@@ -12,7 +12,6 @@ function initializeMap() {
     .attr('height', windowWidth / 2);
 
   const projection = d3.geoEquirectangular()
-    // .fitWidth(windowWidth, { type: "Sphere" })
     .fitSize([windowWidth, windowWidth / 2], { type: "Sphere"});
 
   const path = d3.geoPath(projection);

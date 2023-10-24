@@ -1,5 +1,5 @@
 #map-container {
-  height: calc(width / 2 - 100px);
+  height: calc(100vh - 90px);
   width: 100vw;
   background-color: black;
 }
@@ -11,9 +11,10 @@ body {
 }
 
 #Header {
-  border: 1px solid red;
-  width: 98%;
-  height: 50px;
+  color: white;
+  background-color: #29335C;
+  width: 100%;
+  height: 58px;
   display: flex;
   justify-content: space-between;
 }
