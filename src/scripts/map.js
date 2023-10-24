@@ -2,16 +2,18 @@ import * as d3 from "d3";
 import * as topojson from "topojson";
 
 function initializeMap() {
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
+  debugger;
+  const windowWidth = document.querySelector("#map-container").clientWidth;
+  const windowHeight = document.querySelector("#map-container").clientHeight;
 
-  const svg = d3.select('body')
+  const svg = d3.select('#map-container')
     .append('svg')
     .attr('width', windowWidth)
     .attr('height', windowHeight);
 
   const projection = d3.geoEquirectangular()
-    .fitWidth(windowWidth, { type: "Sphere" })
+    // .fitWidth(windowWidth, { type: "Sphere" })
+    .fitSize([windowWidth, windowHeight], { type: "Sphere"});
 
   const path = d3.geoPath(projection);
   const g = svg.append('g');
