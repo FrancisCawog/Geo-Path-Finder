@@ -8,6 +8,7 @@
   <title>Geo Path Finder</title>
   <script src="./dist/main.js" defer></script>
   <script src="https://kit.fontawesome.com/935aa488c6.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="./src/styles/globe_logo.png">
 </head>
 <body> 
 
@@ -25,24 +26,39 @@
   <div id="map-container">
   </div>
 
-  <div id="guess-box">
-    <input type="text" id="guess-input" list="country-list" placeholder="Guess a country">
-    <button id="submit-guess">Submit</button>
-  </div>
-
+    <div id="start-end-countries">
+      <span id="start-country">Start Country: </span>
+      <span id="end-country">End Country: </span>
+    </div>
+    <div id="guess-box-container">
+      <div id="guess-box">
+        <input type="text" id="guess-input" list="country-list" placeholder="Guess a country">
+        <button id="submit-guess">Submit</button>
+      </div>
+    </div>
+    <div id="buttons-container">
+      <button id="give-up">Give Up</button>
+      <button id="new-game-button3">New Game</button>
+    </div>
   
-
   <!-- moduls -->
   <div id="popup" class="popup">
     <div class="popup-content">
       <h2>Hello and Welcome to Geo Path Finder</h2>
+      <br>
       <p>These are the directions:</p>
+      <br>
       <ol>
         <li>Step 1: When you click the 'Start' button, the 'start' country will light up red and the 'end' country will light up blue. </li>
+        <br>
         <li>Step 2: The objective of the game is to try and connect these 2 countries by guessing all the countries in between.</li>
+        <br>
         <li>Step 3: The game ends when you connect the 2 countries.</li>
+        <br>
         <li>Step 4: Try to get it in as little guesses as possible. </li>
+        <br>
         <li>Step 5: Start the game when you are ready!! </li>
+        <br>
       </ol>
       <button id="start-button">Start</button>
     </div>
@@ -76,7 +92,11 @@
       <br>
       <ol>
         <li>You have won a game of Geo Path Finder</li>
+        <br>
         <li>You found the shortest path!! </li>
+        <br>
+        <li>The route was: </li>
+        <br>
         <li>Your score is 100%</li>
         <br>
         <li>Click "Play Again" to see if you could do it again.</li>
@@ -85,5 +105,23 @@
       <button id="new-game-button2">Play Again</button>
     </div>
   </div>
+
+  <div id="give_up" class="popup">
+    <div class="popup-content">
+      <ul><button id="close-give-up-route">x</button></ul>
+      <p>Oh no!! You gave up :( </p>
+      <br>
+      <ol>
+        <li>That's ok though. You could try again.</li>
+        <br>
+        <li>The correct answer was: </li>
+        <br>
+        <li>Click the "Play Again" button to try again.</li>
+        <br>
+      </ol>
+      <button id="new-game-button4">Play Again</button>
+    </div>
+  </div>
+
 </body>
 </html>

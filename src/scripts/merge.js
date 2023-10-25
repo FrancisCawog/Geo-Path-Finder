@@ -14,7 +14,7 @@ async function merge() {
     "Vatican": "Vatican City",
     "Congo": "Republic of the Congo",
     "Central African Rep.": "Central African Republic",
-    "United States of America": "United States"
+    // "United States of America": "United States"
   };
 
   worldAtlasData.objects.countries.geometries.forEach(country => {
@@ -36,8 +36,8 @@ async function merge() {
     if (country.name.common === "DR Congo") {
     country.name.common = "Democratic Republic of the Congo"; 
     }
-    if (country.name.official === "United States of America") {
-      country.name.official = "United States"; 
+    if (country.name.common === "United States") {
+      country.name.common = "United States of America"; 
     }
     if (country.name.official === "Republic of Chad") {
       country.name.official = "Chad"; 

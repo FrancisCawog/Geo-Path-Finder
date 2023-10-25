@@ -1,8 +1,11 @@
 import * as d3 from 'd3';
 
-function renderShortestPathPopup() {
+function renderShortestPathPopup(guessed_countries) {
     const popup = d3.select('#shortest_route');
     popup.style('display', 'block');
+
+    const html_line = d3.select('#shortest_route').select('li:nth-child(5)');
+    html_line.text(`The path you picked was: ${guessed_countries.join(' -> ')}`);
 
     const closeButton = d3.select('#close-shortest-route');
     closeButton.on('click', function () {
@@ -22,8 +25,8 @@ function renderLongerPathPopup(shortestCountryNames, guessed_countries) {
   const scoreElement = d3.select('#longer_route').select('li:nth-child(2)');
   scoreElement.text(`Your score is: ${score}`);
 
-  const pathYouPickedElement = d3.select('#longer_route').select('li:nth-child(4)');
-  pathYouPickedElement.text(`The path you picked was: ${guessed_countries.join(' -> ')}`);
+  const html_line = d3.select('#longer_route').select('li:nth-child(4)');
+  html_line.text(`The path you picked was: ${guessed_countries.join(' -> ')}`);
 
   const shortestPathElement = d3.select('#longer_route').select('li:nth-child(6)');
   shortestPathElement.text(`The shortest path was: ${shortestCountryNames.join(' -> ')}`);
@@ -38,4 +41,21 @@ function renderLongerPathPopup(shortestCountryNames, guessed_countries) {
     });
 }
 
-export { renderShortestPathPopup,  renderLongerPathPopup }
+function renderGiveUpPopup(answers) {
+  const popup = d3.select('#give_up');
+  popup.style('display', 'block');
+
+  const html_line = d3.select('#give_up').select('li:nth-child(3)');
+  html_line.text(`The correct answer was: ${answers.join(' -> ')}`);
+
+  const closeButton = d3.select('#close-give-up-route');
+  closeButton.on('click', function () {
+    popup.style('display', 'none');
+  })
+  const newGameButton = d3.select('#new-game-button4');
+  newGameButton.on('click', function () {
+      location.reload();
+  });
+};
+
+export { renderShortestPathPopup,  renderLongerPathPopup, renderGiveUpPopup }
