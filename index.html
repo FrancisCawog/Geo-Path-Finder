@@ -61,9 +61,39 @@
         <br>
         <li>Step 5: Start the game when you are ready!! </li>
         <br>
+        <div>
+            <div style="display: inline-block;">
+              <p style="display: inline;">Difficulty:</p>
+              <label for="easy">Easy</label>
+              <input type="radio" id="easy" name="difficulty" value="easy">
+              <label for="medium">Medium</label>
+              <input type="radio" id="medium" name="difficulty" value="medium">
+              <label for="hard">Hard</label>
+              <input type="radio" id="hard" name="difficulty" value="hard">
+            </div>
+        </div>        
+        <br>
         <button id="start-button" type="submit">Start</button>
+      </ol>
     </div>
-  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const startButton = document.getElementById("start-button");
+    const easyRadio = document.getElementById("easy");
+    const mediumRadio = document.getElementById("medium");
+    const hardRadio = document.getElementById("hard");
+    const popup = document.getElementById("popup");
+
+    startButton.addEventListener("click", function(event) {
+      if (easyRadio.checked || mediumRadio.checked || hardRadio.checked) {
+        popup.style.display = "none";
+      }
+    });
+  });
+</script>
+
   
   <div id="longer_route" class="popup">
     <div class="popup-content">

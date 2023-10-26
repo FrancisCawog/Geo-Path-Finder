@@ -13,7 +13,7 @@ let mergedData;
 let shortest;
 let path;
 
-async function selectRandomCountriesAndCheckConnection(mergedData) {
+async function selectRandomCountriesAndCheckConnection(mergedData, selectedDifficulty) {
   const independentCountries = mergedData.filter(country => {
     const restCountriesInfo = country.restCountriesInfo;
     return restCountriesInfo && restCountriesInfo.independent === true && restCountriesInfo.borders.length !== 0;
@@ -26,19 +26,23 @@ async function selectRandomCountriesAndCheckConnection(mergedData) {
     if (findConnection(independentCountries, startCountry, endCountry)) {
 
       shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
-      if (shortest.length < 5 ) {
+      if (
+        (shortest.length < 7 && shortest.length > 2 && selectedDifficulty === "easy") ||
+        (shortest.length > 7 && shortest.length < 10 && selectedDifficulty === "medium") ||
+        (shortest.length > 10 && selectedDifficulty === "hard")
+      ) {
         path = shortest.map(country => country.restCountriesInfo.name.common);
         console.log(path);
-
+    
         document.getElementById("start-country").textContent = "Start: " + startCountry;
         document.getElementById("end-country").textContent = "End: " + endCountry;
-
+    
         d3.selectAll('path.country')
           .classed('start-country', d => d.properties.name === startCountry)
           .classed('end-country', d => d.properties.name === endCountry);
-
+    
         return [startCountry, endCountry];
-      }
+      }    
     }
   }
 }
@@ -122,13 +126,17 @@ document.addEventListener('click', (e) => {
 });
 
 
-initializeGame(async () => {
+initializeGame(async (selectedDifficulty) => {
+  console.log("Difficulty: " + selectedDifficulty);
+
   const data = await merge();
   mergedData = data;
-  const [startCountry, endCountry] = await selectRandomCountriesAndCheckConnection(mergedData);
+
+  const [startCountry, endCountry] = await selectRandomCountriesAndCheckConnection(mergedData, selectedDifficulty);
   initializeGuessedCountries(mergedData, startCountry, endCountry);
   checkForPath();
 });
+
 
 console.log(guessedCountries);
 
