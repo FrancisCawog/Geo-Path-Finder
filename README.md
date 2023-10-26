@@ -6,20 +6,20 @@
 
 ## Functionality
 
--Welcome page
-    * Upon loading, users are greeted with a welcome page.
-    * The welcome page includes game instructions, a difficulty setting (easy, medium, hard), and a "Start Game" button to begin.
+### Welcome page
+    - Upon loading, users are greeted with a welcome page.
+    - The welcome page includes game instructions, a difficulty setting (easy, medium, hard), and a "Start Game" button to begin.
 
--Gameplay
-    * The main game screen displays an interactive map with labeled countries.
-    * In the center of the screen, there's a text input box for users to enter country names. The input box offers autocomplete suggestions in alphabetical order as users type, disappearing when no matches are found.
-    * Users can either click on a suggestion or type the answer and press "Enter" to submit.
-    * As countries are guessed, they appear in a distinctive color (e.g., yellow) on the map, and their names are shown.
-    * The starting and ending countries are displayed on the bottom-left of the screen.
+### Gameplay
+    - The main game screen displays an interactive map with labeled countries.
+    - In the center of the screen, there's a text input box for users to enter country names. The input box offers autocomplete suggestions in alphabetical order as users type, disappearing when no matches are found.
+    - Users can either click on a suggestion or type the answer and press "Enter" to submit.
+    - As countries are guessed, they appear in a distinctive color (e.g., yellow) on the map, and their names are shown.
+    - The starting and ending countries are displayed on the bottom-left of the screen.
 
--Buttons
-    * "Give Up" reveals the correct path on the map in black, along with a pop-up summary of the correct route.
-    * "New Game" returns users to the initial welcome screen for a fresh game.
+### Buttons
+    - "Give Up" reveals the correct path on the map in black, along with a pop-up summary of the correct route.
+    - "New Game" returns users to the initial welcome screen for a fresh game.
 
 ![](./src/styles/welcome.png)
 - Welcome page that renders upon loading.
@@ -87,7 +87,7 @@ function getRandomCountries(mergedData) {
   const randomCountries = [];
 
   while (randomCountries.length < 2) {
-    const randomIndex = Math.floor(Math.random() *  independentCountries.length);
+    const randomIndex = Math.floor(Math.random() -  independentCountries.length);
     const randomCountry = independentCountries[randomIndex];
 
     if (randomCountry && randomCountry.properties && randomCountry.properties.name) {
@@ -181,8 +181,8 @@ export default merge;
 
 # Futute Implementations
 
-    * Transform the 2D map into a 3D globe for a more immersive experience.
-    * Implement a zoom feature to focus on the area containing the start and end countries.
-    * Enhance the visual design, including pop-up boxes, buttons, and input elements.
-    * Add blinking glow effects to countries once the game is successfully completed.
-    8Address any cross-browser compatibility issues to ensure consistent display.
+    - Transform the 2D map into a 3D globe for a more immersive experience.
+    - Implement a zoom feature to focus on the area containing the start and end countries.
+    - Enhance the visual design, including pop-up boxes, buttons, and input elements.
+    - Add blinking glow effects to countries once the game is successfully completed.
+    - Address any cross-browser compatibility issues to ensure consistent display.
