@@ -71,6 +71,11 @@ function getBorderingCountries(mergedData, currentCountry) {
     });
 }
 ```
+- One of the 3 BFS I needed to implement in the code. It takes in the mergedData which likely represents the geography of the world with information about country borders and other attributes. It takes the start and end countries and search through the data to find the country objects based on their names. In the country object, the border information indicates which countries share a border with the current country and I use this data to initiate a BFS traversal by adding the start country to the queue. I explore neighboring countries and add them to the queue, continually expanding the search. The BFS continues until it reaches the end country, at which point its found the shortest path.
+
+- 1 of other 2 BFS' I use figure out if two randomly selected countries have a linear path between them. This is a way to ensure that it's possible to reach one country from the other through bordering countries without backtracking.
+
+- The last one is used to determine whether the path inputted by the user creates a different path than the shortest path. his is a way to validate the user's input and identify if they have found an optimal route.
 
 ```js
 function getRandomCountries(mergedData) {
@@ -173,12 +178,6 @@ async function merge() {
 export default merge;
 ```
 - Function that merges the 2 databases together through the id of one and the cca3 of the other.
-
-- One of the 3 BFS I needed to implement in the code. It takes in the mergedData which likely represents the geography of the world with information about country borders and other attributes. It takes the start and end countries and search through the data to find the country objects based on their names. In the country object, the border information indicates which countries share a border with the current country and I use this data to initiate a BFS traversal by adding the start country to the queue. I explore neighboring countries and add them to the queue, continually expanding the search. The BFS continues until it reaches the end country, at which point its found the shortest path.
-
-- 1 of other 2 BFS' I use figure out if two randomly selected countries have a linear path between them. This is a way to ensure that it's possible to reach one country from the other through bordering countries without backtracking.
-
-- The last one is used to determine whether the path inputted by the user creates a different path than the shortest path. his is a way to validate the user's input and identify if they have found an optimal route.
 
 # Futute Implementations
 
