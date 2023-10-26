@@ -183,7 +183,7 @@ path.country.end-country:hover {
 }
 
 #guess-box-container {
-  position: relative;
+  position: fixed;
   bottom: 10px;
   display: flex;
   flex-direction: row;

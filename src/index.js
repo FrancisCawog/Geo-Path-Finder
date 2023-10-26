@@ -77,17 +77,20 @@ inputField.addEventListener('input', (e) => {
   options.length = 0;
   selectedOptionIndex = -1;
 
-  countryList(mergedData).forEach((countryName) => {
-    if (countryName.toLowerCase().includes(searchTerm)) {
-      options.push(countryName);
-    }
-  });
-
-  if (options.length === 0) {
+  if (searchTerm.trim() === "") { 
     auto.style.display = "none";
   } else {
-    updateOptionsDisplay();
-  }
+    countryList(mergedData).forEach((countryName) => {
+      if (countryName.toLowerCase().includes(searchTerm)) {
+        options.push(countryName);
+      }
+    });
+
+    if (options.length === 0) {
+      auto.style.display = "none";
+    } else {
+      updateOptionsDisplay();
+    }}
 });
 
 inputField.addEventListener('keydown', (e) => {
