@@ -14,7 +14,6 @@ async function merge() {
     "Vatican": "Vatican City",
     "Congo": "Republic of the Congo",
     "Central African Rep.": "Central African Republic",
-    // "United States of America": "United States"
   };
 
   worldAtlasData.objects.countries.geometries.forEach(country => {

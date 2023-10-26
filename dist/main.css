@@ -40,6 +40,7 @@ body {
 
 #Title-card p {
   font-size: 30px;
+  font-family: "roboto";
 }
 
 img {
@@ -66,6 +67,16 @@ path.country.start-country:hover {
   fill: #FF5733;
 }
 
+.country.gaveUp {
+  fill: black;
+  transition: fill 0.3s;
+  position: relative;
+}
+
+.country.gaveUp:hover {
+  fill: gray;
+}
+
 .country.guessed {
   fill: #F3A712;
   transition: fill 0.3s;
@@ -84,31 +95,6 @@ path.country.end-country {
 
 path.country.end-country:hover {
   fill: #81bfd5;
-}
-
-path.country.start-country::after,
-.country.guessed::after,
-path.country.end-country::after {
-  content: attr(data-country);
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 5px;
-  font-size: 12px;
-  border-radius: 3px;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s, visibility 0.3s;
-}
-
-path.country.start-country:hover::after,
-.country.guessed:hover::after,
-path.country.end-country:hover::after {
-  opacity: 1;
-  visibility: visible;
 }
 
 .popup {
@@ -131,6 +117,7 @@ path.country.end-country:hover::after {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  font-family: "roboto";
 }
 
 .popup-container {
@@ -145,6 +132,7 @@ path.country.end-country:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "roboto";
 }
 
 #close-longer-route {
@@ -179,6 +167,7 @@ path.country.end-country:hover::after {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  font-family: "roboto";
 }
 
 #start-end-countries {
@@ -189,6 +178,7 @@ path.country.end-country:hover::after {
   flex-direction: row;
   font-size: 20px;
   margin-left: 10px;
+  font-family: "roboto";
 }
 
 #start-country,
@@ -197,11 +187,12 @@ path.country.end-country:hover::after {
 }
 
 #guess-box-container {
-  position: fixed;
+  position: relative;
   bottom: 10px;
   display: flex;
   flex-direction: row;
   font-size: 20px;
+  font-family: "roboto";
 }
 
 #buttons-container {
@@ -212,6 +203,7 @@ path.country.end-country:hover::after {
   flex-direction: row;
   font-size: 20px;
   margin-right: 10px;
+  font-family: "roboto";
 }
 
 #give-up {
@@ -220,4 +212,42 @@ path.country.end-country:hover::after {
 
 #new-game {
   margin-left: 20px;
+}
+
+#guess-input {
+  height: 20px;
+}
+
+#autocomplete {
+  font-family: "roboto";
+  position: absolute;
+  display: none;
+  max-height: 300px;
+  height: fit-content;
+  width: 145px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  background-color: white;
+  list-style: none;
+  bottom: 26px;
+  padding: 3px;
+}
+#autocomplete li:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  user-select: none;
+}
+#autocomplete li {
+  font-family: "roboto";
+  margin-bottom: 3px;
+  font-size: 18px;
+}
+
+.selected {
+  background-color: lightgray;
+  color: black;
+}
+
+.popup-content {
+  text-align: center;
 }

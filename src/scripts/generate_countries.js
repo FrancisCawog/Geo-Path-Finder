@@ -5,6 +5,7 @@ function getRandomCountries(mergedData) {
   });
 
   const randomCountries = [];
+
   while (randomCountries.length < 2) {
     const randomIndex = Math.floor(Math.random() * independentCountries.length);
     const randomCountry = independentCountries[randomIndex];
@@ -18,4 +19,12 @@ function getRandomCountries(mergedData) {
   return randomCountries;
 }
 
-export { getRandomCountries };
+function countryList(mergedData) {
+  const independentCountries = mergedData.filter(country => {
+    const restCountriesInfo = country.restCountriesInfo;
+    return restCountriesInfo?.independent === true && restCountriesInfo.borders.length > 0;
+  });
+  return (independentCountries.map(country => country.restCountriesInfo.name.common));
+}
+
+export { getRandomCountries, countryList };

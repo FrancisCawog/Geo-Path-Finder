@@ -1,6 +1,6 @@
 import initializeMap from "./scripts/map";
 import merge from "./scripts/merge";
-import { getRandomCountries } from "./scripts/generate_countries";
+import { getRandomCountries, countryList } from "./scripts/generate_countries";
 import { findConnection } from "./scripts/connected_countries";
 import * as d3 from 'd3';
 import { initializeGame } from "./scripts/startGame";
@@ -26,12 +26,12 @@ async function selectRandomCountriesAndCheckConnection(mergedData) {
     if (findConnection(independentCountries, startCountry, endCountry)) {
 
       shortest = shortestPathBFS(independentCountries, startCountry, endCountry);
-      if (shortest.length > 5 ) {
+      if (shortest.length < 5 ) {
         path = shortest.map(country => country.restCountriesInfo.name.common);
         console.log(path);
 
-        document.getElementById("start-country").textContent = "Start Country: " + startCountry;
-        document.getElementById("end-country").textContent = "End Country: " + endCountry;
+        document.getElementById("start-country").textContent = "Start: " + startCountry;
+        document.getElementById("end-country").textContent = "End: " + endCountry;
 
         d3.selectAll('path.country')
           .classed('start-country', d => d.properties.name === startCountry)
@@ -42,6 +42,85 @@ async function selectRandomCountriesAndCheckConnection(mergedData) {
     }
   }
 }
+
+const inputField = document.getElementById("guess-input");
+const auto = document.getElementById("autocomplete");
+const options = [];
+let selectedOptionIndex = -1;
+
+function updateOptionsDisplay() {
+  auto.innerHTML = "";
+  auto.style.display = "block";
+
+  options.sort();
+
+  options.forEach((item, index) => {
+    const tag = document.createElement("li");
+    tag.innerText = item;
+    tag.addEventListener("click", (e) => {
+      inputField.value = e.target.innerText;
+      auto.style.display = "none";
+    });
+    if (index === selectedOptionIndex) {
+      tag.classList.add("selected");
+    }
+    auto.append(tag);
+  });
+}
+
+inputField.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+  options.length = 0;
+  selectedOptionIndex = -1;
+
+  countryList(mergedData).forEach((countryName) => {
+    if (countryName.toLowerCase().includes(searchTerm)) {
+      options.push(countryName);
+    }
+  });
+
+  if (options.length === 0) {
+    auto.style.display = "none";
+  } else {
+    updateOptionsDisplay();
+  }
+});
+
+inputField.addEventListener('keydown', (e) => {
+  if (options.length === 0) {
+    return;
+  }
+
+  if (e.key === "ArrowUp") {
+    e.preventDefault();
+    if (selectedOptionIndex === -1) {
+      selectedOptionIndex = options.length - 1;
+    } else if (selectedOptionIndex > 0) {
+      selectedOptionIndex--;
+    }
+    updateOptionsDisplay();
+  } else if (e.key === "ArrowDown") {
+    e.preventDefault();
+    if (selectedOptionIndex === -1) {
+      selectedOptionIndex = 0;
+    } else if (selectedOptionIndex < options.length - 1) {
+      selectedOptionIndex++;
+    }
+    updateOptionsDisplay();
+  } else if (e.key === "Enter") {
+    if (selectedOptionIndex !== -1) {
+      inputField.value = options[selectedOptionIndex];
+      auto.style.display = "none";
+    }
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target !== inputField && e.target !== auto) {
+    auto.style.display = "none";
+  }
+});
+
 
 initializeGame(async () => {
   const data = await merge();
@@ -61,9 +140,13 @@ function checkForPath() {
 
     if (pathExists) {
      if (guessedCountries.length === shortest.length){
+      document.getElementById("guess-input").disabled = true;
+      document.getElementById("give-up").disabled = true;
       renderShortestPathPopup(guessedCountries);
      } else {
        const shortestCountryNames = shortest.map(country => country.restCountriesInfo.name.common);
+        document.getElementById("guess-input").disabled = true;
+        document.getElementById("give-up").disabled = true;
         renderLongerPathPopup(shortestCountryNames, guessedCountries);
      }
     }
@@ -113,10 +196,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const giveUpButton = d3.select('#give-up');
   giveUpButton.on('click', function () {
     if (path) {
+      document.getElementById("guess-input").disabled = true;
+      document.getElementById("give-up").disabled = true;
       path.forEach(countryName => {
         d3.selectAll('path.country')
           .filter(d => d.properties.name.toLowerCase() === countryName.toLowerCase())
-          .classed('guessed', true);
+          .classed('gaveUp', true);
       });
       renderGiveUpPopup(path);
     }

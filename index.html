@@ -27,11 +27,12 @@
   </div>
 
     <div id="start-end-countries">
-      <span id="start-country">Start Country: </span>
-      <span id="end-country">End Country: </span>
+      <span id="start-country"></span>
+      <span id="end-country"></span>
     </div>
     <div id="guess-box-container">
       <div id="guess-box">
+        <div id="autocomplete"></div>
         <input type="text" id="guess-input" list="country-list" placeholder="Guess a country">
         <button id="submit-guess">Submit</button>
       </div>
@@ -40,6 +41,7 @@
       <button id="give-up">Give Up</button>
       <button id="new-game-button3">New Game</button>
     </div>
+
   
   <!-- moduls -->
   <div id="popup" class="popup">
@@ -49,7 +51,7 @@
       <p>These are the directions:</p>
       <br>
       <ol>
-        <li>Step 1: When you click the 'Start' button, the 'start' country will light up red and the 'end' country will light up blue. </li>
+        <li>Step 1: When you click the 'Start' button, the 'start' country will light up red, and the 'end' country will light up blue. </li>
         <br>
         <li>Step 2: The objective of the game is to try and connect these 2 countries by guessing all the countries in between.</li>
         <br>
@@ -59,11 +61,9 @@
         <br>
         <li>Step 5: Start the game when you are ready!! </li>
         <br>
-      </ol>
-      <button id="start-button">Start</button>
+        <button id="start-button" type="submit">Start</button>
     </div>
   </div>
-
   
   <div id="longer_route" class="popup">
     <div class="popup-content">

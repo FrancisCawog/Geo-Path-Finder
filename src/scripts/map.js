@@ -52,7 +52,7 @@ function initializeMap() {
         .attr('d', path)
         .on('mouseover', function (event) {
           const countryClass = d3.select(this).attr('class');
-          if (countryClass.includes('start-country') || countryClass.includes('end-country') || countryClass.includes('guessed')) {
+          if (countryClass.includes('start-country') || countryClass.includes('end-country') || countryClass.includes('guessed') || countryClass.includes('gaveUp')) {
             const countryName = d3.select(this).attr('data-country');
             showCountryNameTooltip(event, countryName);
           }
@@ -68,12 +68,10 @@ function showCountryNameTooltip(event, countryName) {
   
   const tooltipGroup = svg.append('g');
   
-  // Calculate the text dimensions and update the white box accordingly
   const textDimensions = getTextDimensions(countryName, '14px Roboto'); 
-  const boxWidth = textDimensions.width + 10;  // Adjust the padding as needed
-  const boxHeight = textDimensions.height + 10;  // Adjust the padding as needed
+  const boxWidth = textDimensions.width + 10;
+  const boxHeight = textDimensions.height + 10;
 
-  // Create a white background rectangle for the tooltip
   const tooltipRect = tooltipGroup
     .append('rect')
     .attr('class', 'tooltip-background')
@@ -85,11 +83,9 @@ function showCountryNameTooltip(event, countryName) {
   
   tooltipGroup.attr('transform', `translate(${x + 10}, ${y})`);
   
-  // Calculate the text position to center it within the box
-  const textX = boxWidth / 2; // Center horizontally
-  const textY = boxHeight / 2; // Center vertically
+  const textX = boxWidth / 2;
+  const textY = boxHeight / 2;
   
-  // Create a text element and set its coordinates relative to the background rectangle
   const tooltipText = tooltipGroup
     .append('text')
     .attr('class', 'country-tooltip')
@@ -97,8 +93,8 @@ function showCountryNameTooltip(event, countryName) {
     .style('font-size', '14px')
     .attr('x', textX)
     .attr('y', textY)
-    .style('text-anchor', 'middle') // Center the text horizontally
-    .style('dominant-baseline', 'middle') // Center the text vertically
+    .style('text-anchor', 'middle')
+    .style('dominant-baseline', 'middle')
     .text(countryName);
 }
 
@@ -106,7 +102,6 @@ function hideCountryNameTooltip() {
   d3.selectAll('.tooltip-background, .country-tooltip').remove();
 }
 
-// Function to calculate text dimensions
 function getTextDimensions(text, font) {
   const container = d3.select('body').append('div')
     .attr('class', 'hidden-text-container')

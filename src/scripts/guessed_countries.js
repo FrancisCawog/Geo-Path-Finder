@@ -33,9 +33,4 @@ export function initializeGuessedCountries(mergedData, startCountry, endCountry)
     }
   });
 }
-
-// function updateGuessedCountries(answers) {
-//   guessedCountries = answers;
-// }
-
 export { guessedCountries, capitalizeFirstLetters };
