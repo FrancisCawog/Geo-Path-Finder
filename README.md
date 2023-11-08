@@ -1,5 +1,7 @@
 ## Geo Path Finder
 
+https://franciscawog.github.io/Geo-Path-Finder/
+
 ## Description
 
 - Geo Path Finder is an engaging geography puzzle game that challenges users to find the shortest path between two countries on a map. The objective is to guess the names of countries that form a continuous path between the given starting and ending countries. Countries are considered connected if they share a border. As users make guesses, the countries on the map change color to indicate their location, and the country names are revealed. The game ends when a complete path is found between the two initial countries. After completion, the game provides users with the optimal path to compare their solution.
