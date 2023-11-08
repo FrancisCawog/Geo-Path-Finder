@@ -1,6 +1,6 @@
 ## Geo Path Finder
 
-https://franciscawog.github.io/Geo-Path-Finder/
+[Geo-Path-Finder](https://franciscawog.github.io/Geo-Path-Finder/)
 
 ## Description
 
